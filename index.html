@@ -7,6 +7,7 @@
   <title>沖縄三線・工工四エディター</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="print-fixes.css">
 </head>
 <body>
   <header>
@@ -32,9 +33,12 @@
 
     <section class="workspace">
       <aside class="palette" aria-label="工工四記号">
-        <h2>記号</h2><div id="palette"></div>
-        <button id="eraseBtn" class="danger">消す</button>
-        <p>記号を選び、譜面の枠を押します。もう一度押すと解除します。</p>
+        <h2>工工四の音</h2><div id="palette"></div>
+        <h2>音の書き方</h2><div class="modeButtons"><button id="normalBtn" class="active">通常</button><button id="kubanchiBtn">小弾</button></div>
+        <h2>奏法</h2><div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
+        <h2>歌の記号</h2><div class="lyricSymbols"><button data-lyric-symbol="start">○ 歌い始め</button><button data-lyric-symbol="end">□ 歌い終わり</button><button data-lyric-symbol="open">○カギ矢印</button><button data-lyric-symbol="filled">●カギ矢印</button></div>
+        <button id="eraseBtn" class="danger">選択列の音を消す</button>
+        <p>大きな枠は1拍です。「＋ 半拍」を押すと、枠と枠の間へ音を入れられます。</p>
       </aside>
       <section class="paperWrap">
         <div id="paper" class="paper" aria-label="縦書き工工四譜面">
@@ -51,7 +55,7 @@
       <label>基準音<select id="basePitch"><option value="130.813">C3</option><option value="146.832">D3</option><option value="164.814">E3</option><option value="174.614">F3</option></select></label>
     </section>
   </main>
-  <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea></div></template>
+  <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricMarks"></div></div></div></template>
   <script src="app.js"></script>
 </body>
 </html>

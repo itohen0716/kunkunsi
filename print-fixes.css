@@ -1,0 +1,16 @@
+.lyrics{resize:none!important}
+.palette h2{margin:10px 0 8px}.palette h2:first-child{margin-top:0}.palette button.active{background:#87683f;color:#fff}.modeButtons,.lyricSymbols{display:grid;grid-template-columns:1fr 1fr;gap:6px}.modeButtons button,.lyricSymbols button{min-height:38px;padding:.3rem;font-size:.72rem}.scoreCol{grid-template-columns:42px 42px}.beat{position:relative;border-bottom:1px solid #b8ad9c}.noteCell{width:100%;height:100%;border-bottom:0;position:relative}.noteCell i,.halfCell i{position:absolute;right:1px;top:-2px;font-size:.72rem;font-style:normal}.noteCell.kubanchi span,.halfCell.kubanchi span{font-size:.72em}.halfCell{position:absolute;z-index:2;left:7px;bottom:-11px;width:27px;height:21px;min-height:0;padding:0;border:0;border-radius:5px;background:#fffdf5;color:#a1937f;font-size:.55rem;font-family:"Yu Mincho",serif}.halfCell span{font-size:1rem;color:var(--ink)}.halfCell.playing{background:#ffd66c}.lyricLane{position:relative;width:42px;height:480px}.lyricMarks{position:absolute;right:0;top:0;width:20px;display:grid;grid-template-rows:repeat(12,40px)}.lyricMark{min-height:0;border:0;border-radius:0;padding:0;background:transparent;font-family:serif;font-size:.72rem}.lyricMark:hover{background:#fff3cf}
+@media print{
+  @page{size:A4 landscape;margin:5mm}
+  html,body,main,.workspace,.paperWrap{width:100%;height:auto;margin:0;padding:0}
+  .paper{width:100%;min-height:190mm;padding:3mm 4mm;gap:5mm;align-items:flex-start}
+  .score{gap:1.5mm}
+  .scoreCol{min-height:0;box-shadow:none!important}
+  .noteCells{grid-template-rows:repeat(12,14.5mm)}
+  .beat{min-height:14.5mm}
+  .lyricLane,.lyrics{height:174mm}
+  .lyricMarks{grid-template-rows:repeat(12,14.5mm)}
+  .scoreCol.noLyrics{grid-template-columns:34px}
+  .scoreCol.noLyrics .lyricLane{display:none!important}
+  .halfCell:not(:has(span)){color:transparent!important}
+}
