@@ -1,0 +1,19 @@
+.palette #palette {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.paletteSpacer {
+  display: block;
+  min-height: 44px;
+}
+
+.halfCell.current {
+  outline: 3px solid #e7bd5c;
+  outline-offset: 1px;
+}
+
+@media (max-width: 720px) {
+  .palette #palette {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

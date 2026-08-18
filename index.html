@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="print-fixes.css">
   <link rel="stylesheet" href="keypad.css">
+  <link rel="stylesheet" href="palette-fixes.css">
 </head>
 <body>
   <header>
@@ -41,7 +42,7 @@
       <aside class="palette" aria-label="工工四記号">
         <h2>勘所とキーボード</h2>
         <img class="kandoImage" src="kando-vertical.svg" alt="三線の勘所図。開放弦と工工四の位置">
-        <div class="inputPosition"><button id="beatInputBtn" class="active">1拍</button><button id="halfInputBtn">半拍</button></div>
+        <div class="inputPosition"><button id="beatInputBtn" class="active">1拍</button><button id="halfInputBtn">半拍（Shift）</button></div>
         <p id="inputStatus" class="inputStatus" aria-live="polite">1列・1拍目へ入力</p>
         <div class="screenKeypad">
           <button data-note="合"><b>合</b><small>7</small></button><button data-note="四"><b>四</b><small>8</small></button><button data-note="工"><b>工</b><small>9</small></button><button data-note="下老"><b>下老</b><small>*</small></button>
@@ -50,11 +51,12 @@
           <span></span><button data-note="尺"><b>尺</b><small>0</small></button><button data-note="七"><b>七</b><small>.</small></button><button data-note="八"><b>八</b><small>Ctrl＋/</small></button>
         </div>
         <h2>譜面を直接タップして入力する音</h2><div id="palette"></div>
+        <button id="eraseNoteBtn" class="danger">選択の勘所を消す</button>
         <h2>音の書き方</h2><div class="modeButtons"><button id="normalBtn" class="active">通常</button><button id="kubanchiBtn">小弾</button></div>
         <h2>奏法</h2><div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
         <h2>歌の記号</h2><div class="lyricSymbols"><button data-lyric-symbol="start">○ 歌い始め</button><button data-lyric-symbol="end">□ 歌い終わり</button><button data-lyric-symbol="open">○カギ</button><button data-lyric-symbol="filled">●カギ</button><button data-lyric-symbol="erase">記号を消す</button></div>
         <label class="markLengthControl">カギの長さ <output id="markLengthOut">2拍</output><input id="markLength" type="range" min="1" max="12" value="2"></label>
-        <button id="eraseBtn" class="danger">選択列の音を消す</button>
+        <button id="eraseBtn" class="danger">選択列の音をすべて消す</button>
         <p>大きな枠は1拍です。「＋ 半拍」を押すと、枠と枠の間へ音を入れられます。</p>
       </aside>
       <section class="paperWrap">
