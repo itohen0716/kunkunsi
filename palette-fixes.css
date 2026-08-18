@@ -14,18 +14,34 @@
   min-width: 0;
 }
 
-.palette #palette {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.paletteSpacer {
-  display: block;
-  min-height: 44px;
-}
-
 .halfCell.current {
   outline: 3px solid #e7bd5c;
   outline-offset: 1px;
+}
+
+.kandoRest {
+  width: 100%;
+  margin-top: 6px;
+  font-family: "Yu Mincho", serif;
+  font-size: 1rem;
+}
+
+@media screen {
+  .paperWrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-gutter: stable;
+  }
+
+  .paper {
+    width: max-content;
+  }
+
+  .score,
+  .scoreCol {
+    flex: 0 0 auto;
+  }
 }
 
 @media (max-width: 720px) {
@@ -44,7 +60,4 @@
     grid-template-columns: 1fr;
   }
 
-  .palette #palette {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
