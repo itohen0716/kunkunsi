@@ -4,13 +4,15 @@
   @page{size:A4 landscape;margin:5mm}
   html,body,main,.workspace,.paperWrap{width:100%;height:auto;margin:0;padding:0}
   .paper{width:100%;min-height:190mm;padding:3mm 4mm;gap:5mm;align-items:flex-start}
-  .score{gap:1.5mm}
-  .scoreCol{min-height:0;box-shadow:none!important}
+  .score{gap:7px}
+  .scoreCol{min-height:0;box-shadow:none!important;border:0.35mm solid #222!important;background:#fff!important;grid-template-columns:42px 42px!important}
   .noteCells{grid-template-rows:repeat(12,14.5mm)}
-  .beat{min-height:14.5mm}
+  .beat{min-height:14.5mm;border-bottom:0.25mm solid #222!important}
   .lyricLane,.lyrics{height:174mm}
   .lyricMarks{grid-template-rows:repeat(12,14.5mm)}
-  .scoreCol.noLyrics{grid-template-columns:34px}
-  .scoreCol.noLyrics .lyricLane{display:none!important}
+  .noteCells{border-right:0.25mm solid #222!important}
+  .scoreCol.noLyrics .lyricLane{display:block!important}
+  .lyrics::placeholder{color:transparent!important;opacity:0!important}
+  .scoreCol.selected{box-shadow:none!important}
   .halfCell:not(:has(span)){color:transparent!important}
 }
