@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 500" role="img" aria-labelledby="title desc">
+  <title id="title">三線の縦型勘所図</title>
+  <desc id="desc">一弦、二弦、三弦の開放弦から八までの勘所</desc>
+  <rect width="260" height="500" rx="18" fill="#fffdf7"/>
+  <path d="M35 18h190l-18 72v384H53V90z" fill="#101111"/>
+  <path d="M53 92h154" stroke="#fff" stroke-width="5"/>
+  <g stroke="#8b9699" stroke-width="2"><path d="M88 92v382"/><path d="M130 92v382"/><path d="M172 92v382"/></g>
+  <g fill="#fff" font-family="Yu Gothic, sans-serif" font-size="15" font-weight="700"><text x="72" y="76">一弦</text><text x="114" y="76">二弦</text><text x="156" y="76">三弦</text></g>
+  <g fill="#13ead5" font-family="Yu Gothic, sans-serif" font-size="14" font-weight="700"><text x="8" y="112">開放弦</text></g>
+  <g fill="#e92c27" stroke="#fff" stroke-width="1">
+    <circle cx="88" cy="105" r="16"/><circle cx="130" cy="105" r="16"/><circle cx="172" cy="105" r="16"/>
+    <circle cx="88" cy="190" r="16"/><circle cx="130" cy="190" r="16"/><circle cx="172" cy="190" r="16"/>
+    <circle cx="88" cy="275" r="16"/><circle cx="130" cy="275" r="16"/><circle cx="172" cy="275" r="16"/>
+    <circle cx="88" cy="360" r="16"/><circle cx="130" cy="360" r="16"/><circle cx="172" cy="360" r="16"/>
+    <circle cx="172" cy="445" r="16"/>
+  </g>
+  <g fill="#fff" font-family="Yu Mincho, serif" font-size="20" font-weight="700" text-anchor="middle" dominant-baseline="central">
+    <text x="88" y="105">合</text><text x="130" y="105">四</text><text x="172" y="105">工</text>
+    <text x="88" y="190">乙</text><text x="130" y="190">上</text><text x="172" y="190">五</text>
+    <text x="88" y="275">老</text><text x="130" y="275">中</text><text x="172" y="275">六</text>
+    <text x="88" y="360">下老</text><text x="130" y="360">尺</text><text x="172" y="360">七</text>
+    <text x="172" y="445">八</text>
+  </g>
+</svg>

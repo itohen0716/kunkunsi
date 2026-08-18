@@ -1,16 +1,22 @@
+.rhythmSettings{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;align-items:center;margin-top:12px}
+.rhythmSettings>div,.rhythmSettings label{display:grid;gap:6px;font-size:.8rem}
+.rhythmSettings p{margin:0;font-size:.82rem;color:#6f6252}
+.swingButtons{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.swingButtons button{min-height:40px;padding:.35rem}
+.swingButtons button.active{background:#87683f;color:#fff}
 .workspace{grid-template-columns:320px minmax(0,1fr)}
+.kandoImage{display:block;width:100%;max-height:310px;object-fit:contain;margin:3px auto 8px;background:#fffdf7;border:1px solid #d5c7b2;border-radius:10px}
 .inputPosition{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .inputPosition button{min-height:40px}
 .inputStatus{margin:6px 0!important;padding:6px;border-radius:7px;background:#fff8e9;color:#6c5435!important;text-align:center;font-weight:700}
-.kandoGuide{display:grid;gap:5px;margin-bottom:9px}
-.kandoRow{display:grid;grid-template-columns:42px repeat(5,1fr);align-items:center;gap:3px;border-left:3px solid #315f70;padding-left:4px}
-.kandoRow b{font-size:.68rem}
-.kandoRow button{min-width:0;min-height:34px;padding:2px;border-radius:6px;font-family:"Yu Mincho",serif}
 .screenKeypad{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .screenKeypad button{display:grid;place-items:center;gap:1px;min-height:50px;padding:3px;border-radius:7px}
 .screenKeypad b{font-family:"Yu Mincho",serif;font-size:1.1rem}
-.screenKeypad small{font-size:.68rem;color:#6d7f91}
-.screenKeypad .wideKey{grid-column:1/-1}
+.screenKeypad small{font-size:.68rem;color:#6d7f91;white-space:nowrap}
 .palette button.active small{color:#fff}
-@media(max-width:720px){.workspace{display:block}.screenKeypad button{min-height:56px}}
-@media print{.inputPosition,.inputStatus,.kandoGuide,.screenKeypad{display:none!important}}
+.markLengthControl{display:grid;gap:4px;margin-top:7px;font-size:.75rem;font-weight:700}
+.lyricMark{position:relative;overflow:visible!important;z-index:1}
+.lyricMark:has(.bracketSvg){z-index:3}
+.bracketSvg{position:absolute;left:0;top:0;width:20px;overflow:visible;pointer-events:none}
+@media(max-width:720px){.rhythmSettings{grid-template-columns:1fr}.workspace{display:block}.screenKeypad button{min-height:56px}.kandoImage{max-height:360px}}
+@media print{.rhythmSettings,.inputPosition,.inputStatus,.kandoImage,.screenKeypad{display:none!important}}
