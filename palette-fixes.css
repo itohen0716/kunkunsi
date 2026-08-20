@@ -175,8 +175,8 @@
 }
 
 .halfCell i {
-  right: -1px;
-  top: -8px;
+  right: -5px;
+  top: -5px;
   font-size: .62rem;
 }
 
@@ -188,7 +188,7 @@
 .halfCell:has(span) {
   border: 0;
   border-radius: 0;
-  background: #fff;
+  background: transparent;
 }
 
 .noteCell .longSymbol,

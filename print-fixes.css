@@ -15,7 +15,7 @@
   .lyrics::placeholder{color:transparent!important;opacity:0!important}
   .scoreCol.selected{box-shadow:none!important}
   .halfCell:not(:has(span)){color:transparent!important;background:transparent!important}
-  .halfCell:has(span){border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important}
+  .halfCell:has(span){border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
   .beat.trailingEmpty,.lyricMark.trailingEmpty{display:block!important}
   .lyrics{display:none!important}
   .lyricsPrint{display:block!important;writing-mode:vertical-rl;width:42px;padding:7px 2px;line-height:1.3;white-space:pre-wrap;overflow:hidden}
