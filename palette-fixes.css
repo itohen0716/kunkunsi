@@ -3,17 +3,30 @@
 }
 
 .rhythmHelpIntro {
-  grid-column: 1 / -1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
 }
 
 .rhythmHelpIntro p {
   margin: 0;
   color: #51483d;
   line-height: 1.55;
+  font-size: .76rem;
+}
+
+.rhythmSettings {
+  grid-template-columns: 1.15fr 1fr 1.45fr;
+  gap: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.tempoMeta {
+  font-size: .72rem;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .helpButton {
@@ -148,6 +161,17 @@
   outline-offset: 1px;
 }
 
+.halfCell {
+  background: transparent;
+  border-radius: 0;
+}
+
+.halfCell:has(span) {
+  border: 1px solid #b8ad9c;
+  border-radius: 5px;
+  background: #fffdf5;
+}
+
 .kandoRest {
   width: 100%;
   margin-top: 6px;
@@ -174,6 +198,10 @@
 }
 
 @media (max-width: 720px) {
+  .rhythmSettings {
+    grid-template-columns: 1fr;
+  }
+
   .palette {
     grid-template-columns: 125px minmax(0, 1fr);
     gap: 8px;

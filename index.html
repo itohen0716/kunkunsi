@@ -22,12 +22,11 @@
       <label>題名<input id="title" maxlength="60" value="童神"></label>
       <label>作者<input id="author" maxlength="60" value="沖縄童謡"></label>
       <label>ちんだみ<select id="tuning"><option>本調子</option><option>二揚げ</option><option>三下げ</option></select></label>
-      <label>速度 <output id="tempoOut">100</output><input id="tempo" type="range" min="40" max="180" value="100"></label>
+      <label class="tempoSetting">速度 <span class="tempoMeta"><output id="tempoOut">100</output> BPM　<span id="durationOut">所要時間：約0秒</span></span><input id="tempo" type="range" min="40" max="180" value="100"></label>
     </section>
     <section class="panel rhythmSettings" aria-label="リズム設定">
       <div><b>ハネの単位</b><div class="swingButtons"><button data-swing="none" class="active">なし</button><button data-swing="half">半拍</button><button data-swing="beat">1拍</button></div></div>
       <label>ハネの比率 <output id="swingRatioOut">2.0：1</output><input id="swingRatio" type="range" min="1" max="3" step="0.1" value="2"></label>
-      <p>速度：<b id="rhythmTempo">100 BPM</b>　<span id="durationOut">所要時間：約0秒</span></p>
       <div class="rhythmHelpIntro"><p>補足：1.0：1は均等、2.0：1は三連符系のハネです。<br>詳しくは「？」を押してください。</p><button id="swingHelpBtn" class="helpButton" type="button" aria-label="ハネの設定について詳しく見る">？</button></div>
     </section>
 
@@ -104,6 +103,7 @@
     </section>
   </main>
   <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricsPrint" aria-hidden="true"></div><div class="lyricMarks"></div></div></div></template>
+  <script src="sample-score.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
