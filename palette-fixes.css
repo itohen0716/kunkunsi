@@ -143,9 +143,16 @@
 
 .bracketChoice path,
 .bracketChoice circle {
-  fill: #fff;
   stroke: currentColor;
   stroke-width: 1.4;
+}
+
+.bracketChoice path {
+  fill: none;
+}
+
+.bracketChoice circle {
+  fill: #fff;
 }
 
 .bracketChoice circle.filled {
@@ -170,6 +177,28 @@
   border: 0;
   border-radius: 0;
   background: #fff;
+}
+
+.noteCell .longSymbol,
+.halfCell .longSymbol {
+  display: inline-block;
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+  line-height: 1;
+}
+
+.noteCell,
+.halfCell {
+  font-family: "Yu Kyokasho", "UD Digi Kyokasho N-R", "Hiragino Mincho ProN", "Noto Serif CJK JP", "Yu Mincho", serif;
+  font-weight: 600;
+}
+
+.noteCell .longSymbol {
+  font-size: .78em;
+}
+
+.halfCell .longSymbol {
+  font-size: .72rem;
 }
 
 .kandoInstruction {
@@ -198,6 +227,25 @@
   .score,
   .scoreCol {
     flex: 0 0 auto;
+  }
+
+  .scoreCol {
+    min-height: 0;
+  }
+
+  .noteCells,
+  .lyricMarks {
+    grid-template-rows: repeat(var(--visibleRows, 12), 40px);
+  }
+
+  .lyricLane,
+  .lyrics {
+    height: calc(var(--visibleRows, 12) * 40px);
+  }
+
+  .beat.trailingEmpty,
+  .lyricMark.trailingEmpty {
+    display: none;
   }
 }
 
