@@ -1,7 +1,8 @@
 "use strict";
-const CACHE="kunkunshi-v14";
+const CACHE="kunkunshi-v18";
 const ASSETS=[
   "./","index.html","styles.css","print-fixes.css","keypad.css","palette-fixes.css","sample-score.js","app.js","manifest.webmanifest","icon.svg","kando-vertical.svg",
+  "assets/fonts/ShipporiMincho-SemiBold-Kunkunshi.ttf","assets/fonts/ShipporiMincho-LICENSE.txt",
   "audio/合.wav","audio/乙.wav","audio/老.wav","audio/下老.wav","audio/四.wav","audio/上.wav",
   "audio/中.wav","audio/尺.wav","audio/工.wav","audio/五.wav","audio/六.wav","audio/七.wav","audio/八.wav",
   "audio/二揚四.wav","audio/二揚上.wav","audio/二揚_中.wav","audio/三下七.wav"

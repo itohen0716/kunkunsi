@@ -141,14 +141,14 @@
   margin: auto;
 }
 
-.bracketChoice path,
+.bracketChoice line,
 .bracketChoice circle {
   stroke: currentColor;
   stroke-width: 1.4;
 }
 
-.bracketChoice path {
-  fill: none;
+.bracketChoice line {
+  stroke-linecap: square;
 }
 
 .bracketChoice circle {
@@ -166,6 +166,18 @@
 .halfCell.current {
   outline: 3px solid #e7bd5c;
   outline-offset: 1px;
+}
+
+/* 奏法記号は、それぞれの勘所文字の右上に収める。 */
+.noteCell i {
+  right: 1px;
+  top: 1px;
+}
+
+.halfCell i {
+  right: -1px;
+  top: -8px;
+  font-size: .62rem;
 }
 
 .halfCell {
@@ -189,7 +201,7 @@
 
 .noteCell,
 .halfCell {
-  font-family: "Yu Kyokasho", "UD Digi Kyokasho N-R", "Hiragino Mincho ProN", "Noto Serif CJK JP", "Yu Mincho", serif;
+  font-family: "Kunkunshi Shippori", serif;
   font-weight: 600;
 }
 
@@ -289,4 +301,11 @@
   .swingHelpDialog {
     display: none !important;
   }
+}
+@font-face {
+  font-family: "Kunkunshi Shippori";
+  src: url("assets/fonts/ShipporiMincho-SemiBold-Kunkunshi.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
 }
