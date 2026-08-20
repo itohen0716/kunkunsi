@@ -1,5 +1,5 @@
 "use strict";
-const CACHE="kunkunshi-v19";
+const CACHE="kunkunshi-v20";
 const ASSETS=[
   "./","index.html","styles.css","print-fixes.css","keypad.css","palette-fixes.css","sample-score.js","app.js","manifest.webmanifest","icon.svg","kando-vertical.svg",
   "assets/fonts/ShipporiMincho-SemiBold-Kunkunshi.ttf","assets/fonts/ShipporiMincho-LICENSE.txt",

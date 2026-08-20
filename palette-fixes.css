@@ -129,6 +129,32 @@
   min-width: 0;
 }
 
+.chiriControls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.chiriControls button {
+  min-height: 38px;
+  padding: .3rem;
+  font-size: .72rem;
+}
+
+.chiriControls label {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px 8px;
+  font-size: .72rem;
+}
+
+.chiriControls input {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
 .bracketChoice {
   min-height: 58px !important;
   padding: 2px !important;
@@ -191,6 +217,34 @@
   background: transparent;
 }
 
+.beat:has(.halfCell span) {
+  border-bottom-color: transparent;
+}
+
+.halfCell:has(span)::before,
+.halfCell:has(span)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  border-top: 1px solid #b8ad9c;
+}
+
+.halfCell:has(span)::before {
+  left: -7px;
+  width: 11px;
+}
+
+.halfCell:has(span)::after {
+  right: -8px;
+  width: 12px;
+}
+
+.halfCell:has(span) span {
+  position: relative;
+  z-index: 3;
+}
+
 .noteCell .longSymbol,
 .halfCell .longSymbol {
   display: inline-block;
@@ -224,6 +278,58 @@
   font-size: 1rem;
 }
 
+.paper {
+  display: block;
+}
+
+.scoreStage {
+  min-width: 0;
+}
+
+.paperBody {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.notationLegend {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #817767;
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.notationLegend p {
+  display: grid;
+  grid-template-columns: 4.5em minmax(0, 1fr);
+  gap: 8px;
+  margin: 2px 0;
+}
+
+.notationLegend b {
+  white-space: nowrap;
+}
+
+.noteCells {
+  position: relative;
+}
+
+.chiriLine {
+  position: absolute;
+  z-index: 5;
+  top: calc((var(--chiri-start) + .5) * 40px);
+  right: 3px;
+  height: calc((var(--chiri-length) - 1) * 40px);
+  border-right: 2px solid #222;
+  pointer-events: none;
+}
+
+.printPages {
+  display: none;
+}
+
 @media screen {
   .paperWrap {
     overflow-x: auto;
@@ -234,6 +340,7 @@
 
   .paper {
     width: max-content;
+    min-height: 0;
   }
 
   .score,

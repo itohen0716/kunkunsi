@@ -73,6 +73,10 @@
           <section>
             <h2>奏法</h2>
             <div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
+            <div class="chiriControls">
+              <button id="chiriBtn">列音を記入</button><button id="chiriEraseBtn">列音を消す</button>
+              <label>列音の長さ <output id="chiriLengthOut">2音</output><input id="chiriLength" type="range" min="2" max="3" value="2"></label>
+            </div>
           </section>
           <section>
             <h2>歌の記号</h2>
@@ -88,12 +92,22 @@
           </section>
         </div>
       </aside>
-      <section class="paperWrap">
-        <div id="paper" class="paper" aria-label="縦書き工工四譜面">
-          <div class="paperTitle"><b id="paperTitle">童神</b><span id="paperMeta">沖縄童謡・本調子</span></div>
-          <div id="score" class="score"></div>
-        </div>
-      </section>
+      <div class="scoreStage">
+        <section class="paperWrap">
+          <div id="paper" class="paper" aria-label="縦書き工工四譜面">
+            <div class="paperBody">
+              <div class="paperTitle"><b id="paperTitle">童神</b><span id="paperMeta">沖縄童謡・本調子</span></div>
+              <div id="score" class="score"></div>
+            </div>
+          </div>
+        </section>
+        <section class="notationLegend" aria-label="工工四記号の説明">
+            <p><b>打音</b><span>うちうとう。弦を弾かずに、左手の指で弦を打って音を出す。工工四の大文字の時はきちんと打って音を出すが、小文字のときは、打つというより押さえて音を小さく出す。</span></p>
+            <p><b>掛音</b><span>かきうとう。バチを弦の下からひっかけて弾く奏法。工工四で「┐」の記号がつく。</span></p>
+            <p><b>列音</b><span>ちりびち。工工四の記号の右側に線を引いてつなげてある音を同時に出す弾き方。</span></p>
+        </section>
+      </div>
+      <div id="printPages" class="printPages" aria-hidden="true"></div>
     </section>
 
     <section class="player panel" aria-label="自動演奏">
