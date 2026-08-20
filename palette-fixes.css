@@ -3,8 +3,8 @@
 }
 
 .rhythmHelpIntro {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px;
   align-items: center;
   gap: 10px;
 }
@@ -13,7 +13,7 @@
   margin: 0;
   color: #51483d;
   line-height: 1.55;
-  font-size: .76rem;
+  font-size: .88rem;
 }
 
 .rhythmSettings {
@@ -167,9 +167,13 @@
 }
 
 .halfCell:has(span) {
-  border: 1px solid #b8ad9c;
-  border-radius: 5px;
-  background: #fffdf5;
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+}
+
+.kandoInstruction {
+  line-height: 1.55;
 }
 
 .kandoRest {
@@ -228,7 +232,7 @@
   }
 
   .rhythmHelpIntro p {
-    font-size: .78rem;
+    font-size: .84rem;
   }
 
 }

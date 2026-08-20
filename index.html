@@ -27,7 +27,7 @@
     <section class="panel rhythmSettings" aria-label="リズム設定">
       <div><b>ハネの単位</b><div class="swingButtons"><button data-swing="none" class="active">なし</button><button data-swing="half">半拍</button><button data-swing="beat">1拍</button></div></div>
       <label>ハネの比率 <output id="swingRatioOut">2.0：1</output><input id="swingRatio" type="range" min="1" max="3" step="0.1" value="2"></label>
-      <div class="rhythmHelpIntro"><p>補足：1.0：1は均等、2.0：1は三連符系のハネです。<br>詳しくは「？」を押してください。</p><button id="swingHelpBtn" class="helpButton" type="button" aria-label="ハネの設定について詳しく見る">？</button></div>
+      <div class="rhythmHelpIntro"><p>補足：1.0：1は均等、2.0：1は三連符系のハネです。<br>詳しい設定例は「？」を押してください。</p><button id="swingHelpBtn" class="helpButton" type="button" aria-label="ハネの設定について詳しく見る">？</button></div>
     </section>
 
     <dialog id="swingHelpDialog" class="swingHelpDialog" aria-labelledby="swingHelpTitle">
@@ -51,7 +51,7 @@
     <section class="workspace">
       <aside class="palette" aria-label="工工四記号">
         <div class="paletteLeft">
-          <h2>譜面を直接タップして入力する音</h2>
+          <h2 class="kandoInstruction">入力したい場所を押し、<br>三線の勘所を押す（自動移動）</h2>
           <object id="kandoObject" class="kandoImage" data="kando-vertical.svg" type="image/svg+xml" aria-label="赤い勘所を押して工工四を入力する三線図"></object>
           <button class="kandoRest" data-note="○">○　休符</button>
         </div>
