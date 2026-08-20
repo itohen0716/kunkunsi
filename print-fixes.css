@@ -8,11 +8,13 @@
   .scoreCol{min-height:0;box-shadow:none!important;border:0.35mm solid #222!important;background:#fff!important;grid-template-columns:42px 42px!important}
   .noteCells{grid-template-rows:repeat(12,14.5mm)}
   .beat{min-height:14.5mm;border-bottom:0.25mm solid #222!important}
-  .lyricLane,.lyrics{height:174mm}
+  .lyricLane,.lyrics,.lyricsPrint{height:174mm}
   .lyricMarks{grid-template-rows:repeat(12,14.5mm)}
   .noteCells{border-right:0.25mm solid #222!important}
   .scoreCol.noLyrics .lyricLane{display:block!important}
   .lyrics::placeholder{color:transparent!important;opacity:0!important}
   .scoreCol.selected{box-shadow:none!important}
-  .halfCell:not(:has(span)){color:transparent!important}
+  .halfCell:not(:has(span)){color:transparent!important;background:transparent!important}
+  .lyrics{display:none!important}
+  .lyricsPrint{display:block!important;writing-mode:vertical-rl;width:42px;padding:7px 2px;line-height:1.3;white-space:pre-wrap;overflow:hidden}
 }

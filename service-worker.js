@@ -1,5 +1,5 @@
 "use strict";
-const CACHE="kunkunshi-v10";
+const CACHE="kunkunshi-v12";
 const ASSETS=[
   "./","index.html","styles.css","print-fixes.css","keypad.css","palette-fixes.css","app.js","manifest.webmanifest","icon.svg","kando-vertical.svg",
   "audio/合.wav","audio/乙.wav","audio/老.wav","audio/下老.wav","audio/四.wav","audio/上.wav",

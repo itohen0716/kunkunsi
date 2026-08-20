@@ -28,7 +28,18 @@
       <div><b>ハネの単位</b><div class="swingButtons"><button data-swing="none" class="active">なし</button><button data-swing="half">半拍</button><button data-swing="beat">1拍</button></div></div>
       <label>ハネの比率 <output id="swingRatioOut">2.0：1</output><input id="swingRatio" type="range" min="1" max="3" step="0.1" value="2"></label>
       <p>速度：<b id="rhythmTempo">100 BPM</b>　<span id="durationOut">所要時間：約0秒</span></p>
+      <div class="rhythmHelpIntro"><p>補足：1.0：1は均等、2.0：1は三連符系のハネです。<br>詳しくは「？」を押してください。</p><button id="swingHelpBtn" class="helpButton" type="button" aria-label="ハネの設定について詳しく見る">？</button></div>
     </section>
+
+    <dialog id="swingHelpDialog" class="swingHelpDialog" aria-labelledby="swingHelpTitle">
+      <div class="dialogHeader"><h2 id="swingHelpTitle">ハネの設定について</h2><button id="swingHelpClose" type="button" aria-label="説明を閉じる">×</button></div>
+      <div class="dialogBody">
+        <p>「半拍」は一般的なシャッフルのように、表拍と裏拍の間隔を長短にします。<br>「1拍」は一拍ごとの間隔を交互に長短化する特殊な設定です。</p>
+        <section><h3>1. カチャーシー・速い民謡</h3><p><strong>推奨するハネの単位：半拍<br>設定例：1.7：1～2.2：1</strong></p><p>表拍を長く、裏拍を短くすると、「ター・タ、ター・タ」という弾むリズムになります。</p><ul><li>1.7：1：自然で軽いハネ</li><li>2.0：1：三連符系の明確なハネ</li><li>2.2：1：さらに鋭く前へ進む感じ</li></ul><p>まずは2.0：1で再生し、速い曲で詰まって聞こえる場合は1.7～1.9へ下げるのがおすすめです。</p><p><strong>補足：</strong>カチャーシーは曲名ではなく、祝いの場などで踊られる即興性のある踊り・演奏の場を指します。すべてのカチャーシー曲が同じハネ方になるわけではありません。<a href="https://www.orionbeer.co.jp/story/kachashi/" target="_blank" rel="noopener noreferrer">カチャーシーの解説</a></p></section>
+        <section><h3>2. 一般的な島唄・穏やかな民謡</h3><p><strong>推奨するハネの単位：半拍<br>設定例：1.3：1～1.7：1</strong></p><p>均等なリズムを少しだけ崩し、歌を邪魔しない穏やかなハネを加えます。</p><ul><li>1.3：1：ほぼ均等で、ごく自然</li><li>1.5：1：軽く歩くようなリズム</li><li>1.7：1：ハネをはっきり感じる</li></ul><p>安里屋ユンタなどは版や編曲によってリズムが異なるため、1.5：1を出発点に、手本の演奏を聴いて調整してください。</p></section>
+        <section><h3>3. 琉球古典音楽・ゆったりした民謡</h3><p><strong>推奨するハネの単位：なし<br>設定例：1.0：1</strong></p><p>固定したハネを加えず、均等なタイミングで再生します。</p><p>少しだけ柔らかさを加えたい場合は、半拍を選び、1.1：1～1.2：1程度にします。ただし、古典音楽の「間」や歌に合わせた伸縮は、一定のハネ比率だけでは再現できません。</p></section>
+      </div>
+    </dialog>
 
     <section class="toolbar" aria-label="編集操作">
       <button id="newBtn">新規</button><button id="sampleBtn">童神の見本</button>
@@ -44,9 +55,6 @@
           <h2>譜面を直接タップして入力する音</h2>
           <object id="kandoObject" class="kandoImage" data="kando-vertical.svg" type="image/svg+xml" aria-label="赤い勘所を押して工工四を入力する三線図"></object>
           <button class="kandoRest" data-note="○">○　休符</button>
-          <h2>奏法</h2><div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
-          <h2>歌の記号</h2><div class="lyricSymbols"><button data-lyric-symbol="start">○ 歌い始め</button><button data-lyric-symbol="end">□ 歌い終わり</button><button data-lyric-symbol="open">○カギ</button><button data-lyric-symbol="filled">●カギ</button><button data-lyric-symbol="erase">記号を消す</button></div>
-          <label class="markLengthControl">カギの長さ <output id="markLengthOut">2拍</output><input id="markLength" type="range" min="1" max="12" value="2"></label>
         </div>
         <div class="paletteRight">
           <h2>キーボード入力</h2>
@@ -62,6 +70,24 @@
           <button id="eraseBtn" class="danger">選択列の音をすべて消す</button>
           <p>大きな枠は1拍です。「半拍（Shift）」を押すと、枠と枠の間へ音を入れられます。</p>
         </div>
+        <div class="notationTools">
+          <section>
+            <h2>奏法</h2>
+            <div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
+          </section>
+          <section>
+            <h2>歌の記号</h2>
+            <div class="lyricSymbols">
+              <button data-lyric-symbol="start">○ 歌い始め</button><button data-lyric-symbol="end">□ 歌い終わり</button>
+              <button class="bracketChoice" data-lyric-symbol="hookTopOpen" aria-label="上側で曲がる白丸のカギ"><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M24 39V10H10"/><circle cx="24" cy="39" r="4"/></svg></button>
+              <button class="bracketChoice" data-lyric-symbol="hookTopFilled" aria-label="上側で曲がる黒丸のカギ"><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M24 39V10H10"/><circle class="filled" cx="24" cy="39" r="4"/></svg></button>
+              <button class="bracketChoice" data-lyric-symbol="hookBottomOpen" aria-label="下側で曲がる白丸のカギ"><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M24 9V38H10"/><circle cx="24" cy="9" r="4"/></svg></button>
+              <button class="bracketChoice" data-lyric-symbol="hookBottomFilled" aria-label="下側で曲がる黒丸のカギ"><svg viewBox="0 0 44 48" aria-hidden="true"><path d="M24 9V38H10"/><circle class="filled" cx="24" cy="9" r="4"/></svg></button>
+              <button data-lyric-symbol="erase">記号を消す</button>
+            </div>
+            <label class="markLengthControl">カギの長さ <output id="markLengthOut">2拍</output><input id="markLength" type="range" min="1" max="12" value="2"></label>
+          </section>
+        </div>
       </aside>
       <section class="paperWrap">
         <div id="paper" class="paper" aria-label="縦書き工工四譜面">
@@ -75,10 +101,9 @@
       <div><h2>自動演奏</h2><p id="playStatus" aria-live="polite">停止中</p></div>
       <button id="playBtn" class="primary">▶ 最初から演奏</button>
       <button id="stopBtn">■ 停止</button>
-      <label>基準音<select id="basePitch"><option value="130.813">C3</option><option value="146.832">D3</option><option value="164.814">E3</option><option value="174.614">F3</option></select></label>
     </section>
   </main>
-  <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricMarks"></div></div></div></template>
+  <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricsPrint" aria-hidden="true"></div><div class="lyricMarks"></div></div></div></template>
   <script src="app.js"></script>
 </body>
 </html>

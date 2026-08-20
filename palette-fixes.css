@@ -2,6 +2,96 @@
   grid-template-columns: 500px minmax(0, 1fr);
 }
 
+.rhythmHelpIntro {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+.rhythmHelpIntro p {
+  margin: 0;
+  color: #51483d;
+  line-height: 1.55;
+}
+
+.helpButton {
+  flex: 0 0 auto;
+  width: 42px;
+  min-height: 42px;
+  padding: 0;
+  border: 2px solid #302a22;
+  border-radius: 50%;
+  background: #fffdf9;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.swingHelpDialog {
+  width: min(720px, calc(100vw - 24px));
+  max-height: min(82vh, 760px);
+  padding: 0;
+  border: 1px solid #b8aa94;
+  border-radius: 14px;
+  background: #fffdf7;
+  color: #302a22;
+  box-shadow: 0 16px 45px #302a2255;
+}
+
+.swingHelpDialog::backdrop {
+  background: #302a2266;
+}
+
+.dialogHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #ddd0bd;
+  background: #fff8e9;
+}
+
+.dialogHeader h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.dialogHeader button {
+  width: 42px;
+  min-height: 42px;
+  padding: 0;
+  font-size: 1.4rem;
+}
+
+.dialogBody {
+  padding: 4px 18px 20px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.dialogBody section {
+  padding-top: 4px;
+  border-top: 1px solid #e5dccd;
+}
+
+.dialogBody h3 {
+  margin: 16px 0 6px;
+  font-size: 1.05rem;
+}
+
+.dialogBody ul {
+  padding-left: 1.5rem;
+}
+
+.lyricsPrint {
+  display: none;
+}
+
 .palette {
   display: grid;
   grid-template-columns: minmax(170px, .82fr) minmax(240px, 1fr);
@@ -12,6 +102,45 @@
 .paletteLeft,
 .paletteRight {
   min-width: 0;
+}
+
+.notationTools {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 20px;
+  min-width: 0;
+}
+
+.notationTools section {
+  min-width: 0;
+}
+
+.bracketChoice {
+  min-height: 58px !important;
+  padding: 2px !important;
+}
+
+.bracketChoice svg {
+  display: block;
+  width: 36px;
+  height: 44px;
+  margin: auto;
+}
+
+.bracketChoice path,
+.bracketChoice circle {
+  fill: #fff;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.bracketChoice circle.filled {
+  fill: currentColor;
+}
+
+.bracketChoice.active circle:not(.filled) {
+  fill: #87683f;
 }
 
 .halfCell.current {
@@ -60,4 +189,24 @@
     grid-template-columns: 1fr;
   }
 
+  .notationTools {
+    grid-template-columns: .9fr 1.1fr;
+    gap: 8px;
+  }
+
+  .rhythmHelpIntro {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .rhythmHelpIntro p {
+    font-size: .78rem;
+  }
+
+}
+
+@media print {
+  .swingHelpDialog {
+    display: none !important;
+  }
 }
