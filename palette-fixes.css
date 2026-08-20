@@ -243,6 +243,7 @@
 .halfCell:has(span) span {
   position: relative;
   z-index: 3;
+  background: transparent;
 }
 
 .noteCell .longSymbol,
@@ -331,6 +332,22 @@
 }
 
 @media screen {
+  .scoreCol.screenTrailingHalf {
+    border-bottom-color: transparent;
+  }
+
+  .scoreCol.screenTrailingHalf::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    z-index: 1;
+    height: 1px;
+    background: linear-gradient(to right, #817767 0 13px, transparent 13px 29px, #817767 29px 100%);
+    pointer-events: none;
+  }
+
   .paperWrap {
     overflow-x: auto;
     overflow-y: hidden;

@@ -25,7 +25,50 @@ function syncFields(){$("title").value=state.title;$("author").value=state.autho
 function makeNoteButton(ci,ri,slot,note){const button=document.createElement("button"),symbol=note[slot];button.className=`${slot==="main"?"noteCell":"halfCell"}${note[`${slot}Small`]?" kubanchi":""}`;if(selectionActive&&ci===selectedCol&&ri===cursorRow&&slot===selectedSlot)button.classList.add("current");button.dataset.col=String(ci);button.dataset.row=String(ri);button.dataset.slot=slot;button.setAttribute("aria-label",`${ci+1}列 ${ri+1}拍 ${slot==="half"?"後半":"頭"} ${symbol||"空欄"}`);if(symbol){const text=document.createElement("span");text.textContent=symbol;if(symbol==="下老")text.className="longSymbol";button.append(text);const tech=note[`${slot}Tech`];if(tech){const mark=document.createElement("i");mark.textContent=tech==="uchi"?"、":"┐";button.append(mark);}}else if(slot==="half")button.textContent="＋";button.onclick=()=>editCell(ci,ri,slot);return button;}
 function makeBracketSvg(type,length){const height=Math.max(38,length*40-4),filled=type==="filled"||type.endsWith("Filled"),hookTop=type.startsWith("hookTop"),circleFill=filled?"#222":"#fff";if(hookTop)return`<svg class="bracketSvg" viewBox="0 0 20 ${height}" style="height:${height}px" aria-hidden="true"><line x1="11" y1="${height-10}" x2="11" y2="6" stroke="#222" stroke-width="1.5"/><line x1="11" y1="6" x2="3" y2="6" stroke="#222" stroke-width="1.5"/><circle cx="11" cy="${height-6}" r="4" fill="${circleFill}" stroke="#222"/></svg>`;return`<svg class="bracketSvg" viewBox="0 0 20 ${height}" style="height:${height}px" aria-hidden="true"><circle cx="11" cy="6" r="4" fill="${circleFill}" stroke="#222"/><line x1="11" y1="10" x2="11" y2="${height-6}" stroke="#222" stroke-width="1.5"/><line x1="11" y1="${height-6}" x2="3" y2="${height-6}" stroke="#222" stroke-width="1.5"/></svg>`;}
 function visibleBeatCount(column){return Math.min(12,Math.max(1,Number(column.visibleRows)||1));}
-function render(){syncFields();const score=$("score");score.replaceChildren();state.columns.forEach((column,ci)=>{const node=$("columnTemplate").content.firstElementChild.cloneNode(true),visibleRows=visibleBeatCount(column);node.style.setProperty("--visibleRows",String(visibleRows));node.classList.toggle("selected",selectionActive&&ci===selectedCol);const selector=node.querySelector(".colSelect");selector.textContent=String(ci+1);selector.onclick=()=>{selectionActive=true;selectedCol=ci;cursorRow=0;selectedSlot="main";render();};const cells=node.querySelector(".noteCells");column.notes.forEach((note,ri)=>{const beat=document.createElement("div");beat.className=ri<visibleRows?"beat":"beat trailingEmpty";beat.append(makeNoteButton(ci,ri,"main",note),makeNoteButton(ci,ri,"half",note));cells.append(beat);});column.chiriLines.forEach(line=>{const marker=document.createElement("span");marker.className="chiriLine";marker.style.setProperty("--chiri-start",String(line.row));marker.style.setProperty("--chiri-length",String(line.length));marker.setAttribute("aria-label",`${line.length}音の列音`);cells.append(marker);});const lyrics=node.querySelector(".lyrics"),lyricsPrint=node.querySelector(".lyricsPrint");lyrics.value=column.lyrics;lyricsPrint.textContent=column.lyrics;lyrics.onchange=()=>{snapshot();column.lyrics=lyrics.value;if(column.lyrics.trim())column.visibleRows=12;persist();render();};const marks=node.querySelector(".lyricMarks");for(let row=0;row<12;row++){const button=document.createElement("button"),found=column.lyricMarks.find(mark=>mark.row===row);button.className=row<visibleRows?"lyricMark":"lyricMark trailingEmpty";if(found){if(found.type==="start")button.textContent="○";else if(found.type==="end")button.textContent="□";else button.innerHTML=makeBracketSvg(found.type,found.length);}button.onclick=()=>editLyricMark(ci,row);marks.append(button);}score.append(node);});updateInputStatus();}
+function render(){
+  syncFields();
+  const score=$("score");
+  score.replaceChildren();
+  state.columns.forEach((column,ci)=>{
+    const node=$("columnTemplate").content.firstElementChild.cloneNode(true),visibleRows=visibleBeatCount(column);
+    node.style.setProperty("--visibleRows",String(visibleRows));
+    node.classList.toggle("selected",selectionActive&&ci===selectedCol);
+    node.classList.toggle("screenTrailingHalf",Boolean(column.notes[visibleRows-1]?.half));
+    node.classList.toggle("printTrailingHalf",Boolean(column.notes[11]?.half));
+    const selector=node.querySelector(".colSelect");
+    selector.textContent=String(ci+1);
+    selector.onclick=()=>{selectionActive=true;selectedCol=ci;cursorRow=0;selectedSlot="main";render();};
+    const cells=node.querySelector(".noteCells");
+    column.notes.forEach((note,ri)=>{
+      const beat=document.createElement("div");
+      beat.className=ri<visibleRows?"beat":"beat trailingEmpty";
+      beat.append(makeNoteButton(ci,ri,"main",note),makeNoteButton(ci,ri,"half",note));
+      cells.append(beat);
+    });
+    column.chiriLines.forEach(line=>{
+      const marker=document.createElement("span");
+      marker.className="chiriLine";
+      marker.style.setProperty("--chiri-start",String(line.row));
+      marker.style.setProperty("--chiri-length",String(line.length));
+      marker.setAttribute("aria-label",`${line.length}音の列音`);
+      cells.append(marker);
+    });
+    const lyrics=node.querySelector(".lyrics"),lyricsPrint=node.querySelector(".lyricsPrint");
+    lyrics.value=column.lyrics;
+    lyricsPrint.textContent=column.lyrics;
+    lyrics.onchange=()=>{snapshot();column.lyrics=lyrics.value;if(column.lyrics.trim())column.visibleRows=12;persist();render();};
+    const marks=node.querySelector(".lyricMarks");
+    for(let row=0;row<12;row++){
+      const button=document.createElement("button"),found=column.lyricMarks.find(mark=>mark.row===row);
+      button.className=row<visibleRows?"lyricMark":"lyricMark trailingEmpty";
+      if(found){if(found.type==="start")button.textContent="○";else if(found.type==="end")button.textContent="□";else button.innerHTML=makeBracketSvg(found.type,found.length);}
+      button.onclick=()=>editLyricMark(ci,row);
+      marks.append(button);
+    }
+    score.append(node);
+  });
+  updateInputStatus();
+}
 
 function editCell(ci,ri,slot){snapshot();selectionActive=true;selectedCol=ci;cursorRow=ri;selectedSlot=slot;const column=state.columns[ci],note=column.notes[ri];if(chiriMode){const index=column.chiriLines.findIndex(line=>line.row===ri);if(chiriMode==="erase"){if(index>=0)column.chiriLines.splice(index,1);}else if(slot==="main"){const length=Math.min(chiriLength,12-ri),value={row:ri,length};if(index>=0)column.chiriLines[index]=value;else if(length>=2)column.chiriLines.push(value);column.visibleRows=Math.max(column.visibleRows||1,ri+length);}persist();render();return;}column.visibleRows=Math.max(column.visibleRows||1,ri+1);if(note[slot]===selectedSymbol){note[slot]="";note[`${slot}Tech`]="";}else{note[slot]=selectedSymbol;note[`${slot}Small`]=false;note[`${slot}Tech`]=technique;}persist();render();}
 function previousBeat(){if(cursorRow>0)return{col:selectedCol,row:cursorRow-1};if(selectedCol>0)return{col:selectedCol-1,row:11};return null;}
