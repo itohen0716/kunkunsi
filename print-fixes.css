@@ -1,9 +1,9 @@
 .lyrics{resize:none!important}
 .palette h2{margin:10px 0 8px}.palette h2:first-child{margin-top:0}.palette button.active{background:#87683f;color:#fff}.modeButtons,.lyricSymbols{display:grid;grid-template-columns:1fr 1fr;gap:6px}.modeButtons button,.lyricSymbols button{min-height:38px;padding:.3rem;font-size:.72rem}.scoreCol{grid-template-columns:42px 42px}.beat{position:relative;border-bottom:1px solid #b8ad9c}.noteCell{width:100%;height:100%;border-bottom:0;position:relative;overflow:visible}.noteCell i,.halfCell i{position:absolute;font-size:.72rem;font-style:normal;line-height:1;z-index:4;pointer-events:none}.noteCell i{right:-6px;top:1px}.halfCell i{right:-8px;top:-7px;font-size:.66rem}.noteCell.kubanchi span,.halfCell.kubanchi span{font-size:.72em}.halfCell{position:absolute;z-index:2;left:7px;bottom:-11px;width:27px;height:21px;min-height:0;padding:0;border:0;border-radius:5px;background:#fffdf5;color:#a1937f;font-size:.55rem;font-family:"Yu Mincho",serif;overflow:visible}.halfCell span{font-size:1rem;color:var(--ink)}.halfCell.playing{background:#ffd66c}.lyricLane{position:relative;width:42px;height:480px}.lyricMarks{position:absolute;right:0;top:0;width:20px;display:grid;grid-template-rows:repeat(12,40px)}.lyricMark{min-height:0;border:0;border-radius:0;padding:0;background:transparent;font-family:serif;font-size:.72rem}.lyricMark:hover{background:#fff3cf}
 @media print{
-  @page{size:A4 landscape;margin:4mm 3mm 2mm 2mm}
+  @page{size:A4 landscape;margin:2mm}
   html,body,main,.workspace,.paperWrap{width:100%;height:auto;margin:0;padding:0}
-  .paper{width:100%;min-height:0;padding:2mm 2mm 1mm}
+  .paper{width:max-content;max-width:293mm;min-height:0;padding:0}
   .paperBody{gap:5mm;align-items:flex-start}
   .score{gap:7px}
   .scoreCol{min-height:0;box-shadow:none!important;border:0.35mm solid #222!important;background:#fff!important;grid-template-columns:44px 44px!important}
@@ -27,7 +27,8 @@
   .lyricsPrint{display:block!important;writing-mode:vertical-rl;width:42px;padding:7px 2px;line-height:1.3;white-space:pre-wrap;overflow:hidden}
   .scoreStage{display:none!important}
   .printPages{display:block!important}
-  .printSheet{break-after:page;page-break-after:always}
+  .printSheet{width:293mm;height:206mm;display:flex;align-items:center;justify-content:center;break-after:page;page-break-after:always;overflow:hidden}
+  .printSheet.partial{justify-content:flex-end}
   .printSheet:last-child{break-after:auto;page-break-after:auto}
   .printPaper{break-inside:avoid;page-break-inside:avoid}
   .printPaper .score{gap:7px}
