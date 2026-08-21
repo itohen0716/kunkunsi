@@ -29,6 +29,34 @@
   white-space: nowrap;
 }
 
+.tempoSetting {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.tempoSetting > input {
+  width: 100%;
+}
+
+.tempoHeading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .8rem;
+}
+
+.miniHelpButton {
+  width: 25px;
+  min-height: 25px;
+  padding: 0;
+  border: 1.5px solid #302a22;
+  border-radius: 50%;
+  font-size: .85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 .helpButton {
   flex: 0 0 auto;
   width: 42px;
@@ -99,6 +127,26 @@
 
 .dialogBody ul {
   padding-left: 1.5rem;
+}
+
+.tempoHelpTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px;
+  font-size: .92rem;
+}
+
+.tempoHelpTable th,
+.tempoHelpTable td {
+  padding: 8px 10px;
+  border: 1px solid #cfc2ad;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tempoHelpTable th {
+  background: #f3ead9;
+  white-space: nowrap;
 }
 
 .lyricsPrint {

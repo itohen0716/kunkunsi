@@ -22,7 +22,11 @@
       <label>題名<input id="title" maxlength="60" value="童神"></label>
       <label>作者<input id="author" maxlength="60" value="沖縄童謡"></label>
       <label>ちんだみ<select id="tuning"><option>本調子</option><option>二揚げ</option><option>三下げ</option></select></label>
-      <label class="tempoSetting">速度 <span class="tempoMeta"><output id="tempoOut">100</output> BPM　<span id="durationOut">所要時間：約0秒</span></span><input id="tempo" type="range" min="40" max="180" value="100"></label>
+      <div class="tempoSetting">
+        <div class="tempoHeading"><b>速度</b><button id="tempoHelpBtn" class="miniHelpButton" type="button" aria-label="工工四の拍数と速度表記を見る">？</button></div>
+        <span class="tempoMeta"><output id="tempoOut">100</output> BPM　<span id="durationOut">所要時間：約0秒</span></span>
+        <input id="tempo" type="range" min="40" max="180" value="100" aria-label="演奏速度">
+      </div>
     </section>
     <section class="panel rhythmSettings" aria-label="リズム設定">
       <div><b>ハネの単位</b><div class="swingButtons"><button data-swing="none" class="active">なし</button><button data-swing="half">半拍</button><button data-swing="beat">1拍</button></div></div>
@@ -37,6 +41,19 @@
         <section><h3>1. カチャーシー・速い民謡</h3><p><strong>推奨するハネの単位：半拍<br>設定例：1.7：1～2.2：1</strong></p><p>表拍を長く、裏拍を短くすると、「ター・タ、ター・タ」という弾むリズムになります。</p><ul><li>1.7：1：自然で軽いハネ</li><li>2.0：1：三連符系の明確なハネ</li><li>2.2：1：さらに鋭く前へ進む感じ</li></ul><p>まずは2.0：1で再生し、速い曲で詰まって聞こえる場合は1.7～1.9へ下げるのがおすすめです。</p><p><strong>補足：</strong>カチャーシーは曲名ではなく、祝いの場などで踊られる即興性のある踊り・演奏の場を指します。すべてのカチャーシー曲が同じハネ方になるわけではありません。<a href="https://www.orionbeer.co.jp/story/kachashi/" target="_blank" rel="noopener noreferrer">カチャーシーの解説</a></p></section>
         <section><h3>2. 一般的な島唄・穏やかな民謡</h3><p><strong>推奨するハネの単位：半拍<br>設定例：1.3：1～1.7：1</strong></p><p>均等なリズムを少しだけ崩し、歌を邪魔しない穏やかなハネを加えます。</p><ul><li>1.3：1：ほぼ均等で、ごく自然</li><li>1.5：1：軽く歩くようなリズム</li><li>1.7：1：ハネをはっきり感じる</li></ul><p>安里屋ユンタなどは版や編曲によってリズムが異なるため、1.5：1を出発点に、手本の演奏を聴いて調整してください。</p></section>
         <section><h3>3. 琉球古典音楽・ゆったりした民謡</h3><p><strong>推奨するハネの単位：なし<br>設定例：1.0：1</strong></p><p>固定したハネを加えず、均等なタイミングで再生します。</p><p>少しだけ柔らかさを加えたい場合は、半拍を選び、1.1：1～1.2：1程度にします。ただし、古典音楽の「間」や歌に合わせた伸縮は、一定のハネ比率だけでは再現できません。</p></section>
+      </div>
+    </dialog>
+
+    <dialog id="tempoHelpDialog" class="swingHelpDialog" aria-labelledby="tempoHelpTitle">
+      <div class="dialogHeader"><h2 id="tempoHelpTitle">工工四の拍数と速度表記</h2><button id="tempoHelpClose" type="button" aria-label="説明を閉じる">×</button></div>
+      <div class="dialogBody tempoHelpBody">
+        <p><strong>「凡百十八拍子　一拍子五分脈」</strong>は、「曲全体が118拍あり、一拍を五分脈の長さで演奏する」という指定です。</p>
+        <table class="tempoHelpTable"><thead><tr><th>表記</th><th>意味</th></tr></thead><tbody><tr><td>凡百十八拍子</td><td>休止を含め、曲全体が118拍ある</td></tr><tr><td>一拍子五分脈</td><td>一拍の長さを五分脈にする</td></tr></tbody></table>
+        <section><h3>「分脈」とは</h3><p>人の脈拍を基準にした伝統的な速度の表し方です。数字が小さいほど一拍が短く速くなり、数字が大きいほど一拍が長くゆっくりになります。</p></section>
+        <section><h3>現在のBPMに直すと</h3><p>計算の目安として1脈を約1秒とした場合の値です。実際の演奏では、曲調や流派に合わせて速度を調整してください。</p>
+          <table class="tempoHelpTable"><thead><tr><th>伝統表記</th><th>一拍の目安</th><th>BPMの目安</th></tr></thead><tbody><tr><td>五分脈</td><td>約0.50秒</td><td>約120</td></tr><tr><td>七分五厘脈</td><td>約0.75秒</td><td>約80</td></tr><tr><td>八分一厘脈</td><td>約0.81秒</td><td>約74</td></tr><tr><td>九分脈</td><td>約0.90秒</td><td>約67</td></tr><tr><td>十分脈</td><td>約1.00秒</td><td>約60</td></tr><tr><td>十一分五厘脈</td><td>約1.15秒</td><td>約52</td></tr><tr><td>十二分五厘脈</td><td>約1.25秒</td><td>約48</td></tr></tbody></table>
+        </section>
+        <section><h3>所要時間が書かれている場合</h3><p><strong>総拍数 ÷ 所要秒数 × 60</strong>で、BPMの目安を求められます。</p><p>例：118拍を1分4秒（64秒）で演奏する場合は、118 ÷ 64 × 60 ≒ <strong>111 BPM</strong>です。</p></section>
       </div>
     </dialog>
 
