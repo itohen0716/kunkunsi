@@ -1,5 +1,5 @@
 "use strict";
-const CACHE="kunkunshi-v32";
+const CACHE="kunkunshi-v33";
 const ASSETS=[
   "./","index.html","styles.css","print-fixes.css","keypad.css","palette-fixes.css","sample-score.js","app.js","manifest.webmanifest","icon.svg","kando-vertical.svg",
   "assets/fonts/ShipporiMincho-SemiBold-Kunkunshi.ttf","assets/fonts/ShipporiMincho-LICENSE.txt",
@@ -9,4 +9,4 @@ const ASSETS=[
 ];
 self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
-self.addEventListener("fetch",event=>{if(event.request.method!=="GET")return;event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));return response;}).catch(()=>caches.match("index.html"))));});
+self.addEventListener("fetch",event=>{if(event.request.method!=="GET")return;const request=event.request,url=new URL(request.url),isAppCode=url.origin===self.location.origin&&(request.mode==="navigate"||/[.](?:html|css|js)$/.test(url.pathname));if(isAppCode){event.respondWith(fetch(request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));return response;}).catch(()=>caches.match(request).then(cached=>cached||caches.match("index.html"))));return;}event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));return response;}).catch(()=>caches.match("index.html"))));});
