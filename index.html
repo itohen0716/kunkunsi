@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#775d3c">
   <title>沖縄三線・工工四エディター</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css?v=132">
-  <link rel="stylesheet" href="print-fixes.css?v=132">
-  <link rel="stylesheet" href="keypad.css?v=132">
-  <link rel="stylesheet" href="palette-fixes.css?v=132">
+  <link rel="stylesheet" href="styles.css?v=133">
+  <link rel="stylesheet" href="print-fixes.css?v=133">
+  <link rel="stylesheet" href="keypad.css?v=133">
+  <link rel="stylesheet" href="palette-fixes.css?v=133">
 </head>
 <body>
   <header>
@@ -123,18 +123,17 @@
             <p><b>掛音</b><span>かきうとう。バチを弦の下からひっかけて弾く奏法。工工四で「┐」の記号がつく。</span></p>
             <p><b>列音</b><span>ちりびち。工工四の記号の右側に線を引いてつなげてある音を同時に出す弾き方。</span></p>
         </section>
+        <section class="player panel" aria-label="自動演奏">
+          <div><h2>自動演奏</h2><p id="playStatus" aria-live="polite">停止中</p></div>
+          <button id="playBtn" class="primary">▶ 最初から演奏</button>
+          <button id="stopBtn">■ 停止</button>
+        </section>
       </div>
       <div id="printPages" class="printPages" aria-hidden="true"></div>
     </section>
-
-    <section class="player panel" aria-label="自動演奏">
-      <div><h2>自動演奏</h2><p id="playStatus" aria-live="polite">停止中</p></div>
-      <button id="playBtn" class="primary">▶ 最初から演奏</button>
-      <button id="stopBtn">■ 停止</button>
-    </section>
   </main>
   <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricsPrint" aria-hidden="true"></div><div class="lyricMarks"></div></div></div></template>
-  <script src="sample-score.js?v=132"></script>
-  <script src="app.js?v=132"></script>
+  <script src="sample-score.js?v=133"></script>
+  <script src="app.js?v=133"></script>
 </body>
 </html>

@@ -208,6 +208,22 @@
   padding: 2px !important;
 }
 
+.lyricSymbols {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.lyricSymbols > button:nth-child(1),
+.lyricSymbols > button:nth-child(2),
+.lyricSymbols > button:last-child {
+  grid-column: span 2;
+}
+
+.scoreStage > .player {
+  width: min(390px, 100%);
+  margin: 14px auto 0;
+  padding: 12px;
+}
+
 .bracketChoice svg {
   display: block;
   width: 36px;
@@ -451,6 +467,10 @@
   .paletteLeft .modeButtons,
   .paletteLeft .lyricSymbols {
     grid-template-columns: 1fr;
+  }
+
+  .paletteLeft .lyricSymbols > button {
+    grid-column: auto;
   }
 
   .notationTools {
