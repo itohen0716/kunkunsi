@@ -28,7 +28,7 @@
   .scoreStage{display:none!important}
   .printPages{display:block!important}
   .printSheet{box-sizing:border-box;width:293mm;height:206mm;display:flex;align-items:center;justify-content:center;break-after:page;page-break-after:always;overflow:hidden}
-  .printSheet .printPaper{position:static;display:block!important;height:auto!important;min-height:0!important;transform:none}
+  .printSheet .printPaper{position:static;display:block!important;height:auto!important;min-height:0!important;transform:translateY(30mm)!important}
   .printSheet .paperBody{height:auto!important;min-height:0!important}
   .printSheet .notationLegend{position:static!important}
   .printSheet.partial{justify-content:flex-end}
