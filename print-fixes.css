@@ -3,7 +3,7 @@
 @media print{
   @page{size:A4 landscape;margin:2mm}
   html,body,main,.workspace,.paperWrap{width:100%;height:auto;margin:0;padding:0}
-  .paper{width:max-content;max-width:293mm;height:auto!important;min-height:0!important;padding:0}
+  .paper{width:100%;max-width:none;height:auto!important;min-height:0!important;padding:0}
   .paperBody{gap:5mm;align-items:flex-start}
   .score{gap:7px}
   .scoreCol{min-height:0;box-shadow:none!important;border:0.35mm solid #222!important;background:#fff!important;grid-template-columns:44px 44px!important}
@@ -28,10 +28,10 @@
   .scoreStage{display:none!important}
   .printPages{display:block!important}
   .printSheet{box-sizing:border-box;width:293mm;height:206mm;display:flex;align-items:center;justify-content:center;break-after:page;page-break-after:always;overflow:hidden}
-  .printSheet .printPaper{position:static;display:block!important;height:auto!important;min-height:0!important;transform:translateY(30mm)!important}
-  .printSheet .paperBody{height:auto!important;min-height:0!important}
-  .printSheet .notationLegend{position:static!important}
-  .printSheet.partial{justify-content:flex-end}
+  .printSheet .printPaper{position:static;display:block!important;width:100%!important;height:auto!important;min-height:0!important;transform:translateY(30mm)!important}
+  .printSheet .paperBody{height:auto!important;min-height:0!important;justify-content:center}
+  .printSheet.partial .paperBody{justify-content:flex-start}
+  .printSheet .notationLegend{position:static!important;width:100%}
   .printSheet:last-child{break-after:auto;page-break-after:auto}
   .printPaper{break-inside:avoid;page-break-inside:avoid}
   .printPaper .score{gap:7px}
