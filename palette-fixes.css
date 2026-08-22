@@ -173,8 +173,34 @@
   min-width: 0;
 }
 
-.notationTools section {
+.notationTools section,
+.toolDisclosure {
   min-width: 0;
+}
+
+.desktopSecondaryActions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mobileMoreMenu {
+  display: none;
+}
+
+.toolDisclosure > summary {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.toolDisclosure > summary::-webkit-details-marker {
+  display: none;
+}
+
+.toolDisclosureBody {
+  display: block !important;
 }
 
 .chiriControls {
@@ -218,7 +244,8 @@
   grid-column: span 2;
 }
 
-.scoreStage > .player {
+.workspace > .player {
+  grid-column: 2;
   width: min(390px, 100%);
   margin: 14px auto 0;
   padding: 12px;
@@ -449,33 +476,220 @@
   }
 }
 
-@media (max-width: 720px) {
+@media screen and (max-width: 720px) {
+  main {
+    padding: 8px;
+  }
+
+  header {
+    padding: 8px 10px;
+  }
+
+  header .eyebrow,
+  #saveState {
+    display: none;
+  }
+
+  header h1 {
+    font-size: 1.05rem;
+  }
+
+  .settings {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
   .rhythmSettings {
     grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 10px;
+  }
+
+  .toolbar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .toolbar > button {
+    min-width: 0;
+    min-height: 40px;
+    padding: .35rem .2rem;
+    font-size: .74rem;
+  }
+
+  .desktopSecondaryActions {
+    display: none;
+  }
+
+  .mobileMoreMenu {
+    display: block;
+    grid-column: 1 / -1;
+  }
+
+  .mobileMoreMenu summary {
+    min-height: 40px;
+    padding: 10px;
+    border: 1px solid #b8aa94;
+    border-radius: 9px;
+    background: #fffdf9;
+    color: var(--ink);
+    text-align: center;
+    font-size: .78rem;
+    cursor: pointer;
+  }
+
+  .mobileMoreMenu > div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    padding-top: 6px;
+  }
+
+  .mobileMoreMenu button {
+    min-height: 42px;
+    padding: .35rem;
+    font-size: .78rem;
+  }
+
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scoreStage {
+    order: 1;
   }
 
   .palette {
-    grid-template-columns: 125px minmax(0, 1fr);
+    order: 2;
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 8px;
     padding: 8px;
+  }
+
+  .workspace > .player {
+    order: 3;
+    grid-column: auto;
+    width: min(390px, 100%);
+    margin: 0 auto;
+  }
+
+  .scoreStage > .notationLegend {
+    display: none;
+  }
+
+  .paperWrap {
+    padding: 10px 8px;
+    border-radius: 10px;
+  }
+
+  .paper {
+    padding: 34px 18px 22px;
+  }
+
+  .paletteLeft {
+    order: 2;
+  }
+
+  .paletteRight {
+    order: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .paletteRight > h2,
+  .paletteRight > .inputPosition,
+  .paletteRight > .inputStatus,
+  .paletteRight > .screenKeypad,
+  .paletteRight > p {
+    grid-column: 1 / -1;
+  }
+
+  .paletteRight > h2,
+  .paletteRight > p:last-child,
+  .kandoInstruction,
+  .kandoImage {
+    display: none;
+  }
+
+  .paletteRight .danger {
+    width: auto;
+    margin-top: 0;
+    min-height: 42px;
+    padding: .35rem;
+    font-size: .72rem;
+  }
+
+  .kandoRest {
+    min-height: 42px;
+    margin: 0;
+  }
+
+  .screenKeypad button {
+    min-height: 50px;
   }
 
   .palette h2 {
     font-size: .82rem;
   }
 
-  .paletteLeft .modeButtons,
-  .paletteLeft .lyricSymbols {
-    grid-template-columns: 1fr;
+  .notationTools {
+    order: 3;
+    grid-column: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
   }
 
-  .paletteLeft .lyricSymbols > button {
-    grid-column: auto;
+  .toolDisclosure {
+    padding: 0;
+    border: 1px solid #cdbfa9;
+    border-radius: 9px;
+    background: #fffaf0;
+  }
+
+  .toolDisclosure[open] {
+    grid-column: 1 / -1;
+  }
+
+  .toolDisclosure > summary {
+    margin: 0;
+    min-height: 42px;
+    padding: 11px 30px 9px 12px;
+    position: relative;
+    font-size: .82rem;
+    cursor: pointer;
+  }
+
+  .toolDisclosure > summary::after {
+    content: "＋";
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    font-size: 1rem;
+  }
+
+  .toolDisclosure[open] > summary::after {
+    content: "−";
+  }
+
+  .toolDisclosureBody {
+    display: none !important;
+    padding: 0 8px 8px;
+  }
+
+  .toolDisclosure[open] > .toolDisclosureBody {
+    display: block !important;
   }
 
   .notationTools {
-    grid-template-columns: .9fr 1.1fr;
-    gap: 8px;
+    min-width: 0;
   }
 
   .rhythmHelpIntro {

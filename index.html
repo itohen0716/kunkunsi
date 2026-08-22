@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#775d3c">
   <title>沖縄三線・工工四エディター</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="styles.css?v=133">
-  <link rel="stylesheet" href="print-fixes.css?v=133">
-  <link rel="stylesheet" href="keypad.css?v=133">
-  <link rel="stylesheet" href="palette-fixes.css?v=133">
+  <link rel="stylesheet" href="styles.css?v=135">
+  <link rel="stylesheet" href="print-fixes.css?v=135">
+  <link rel="stylesheet" href="keypad.css?v=135">
+  <link rel="stylesheet" href="palette-fixes.css?v=135">
 </head>
 <body>
   <header>
@@ -60,9 +60,13 @@
     <section class="toolbar" aria-label="編集操作">
       <button id="newBtn">新規</button><button id="sampleBtn">童神の見本</button>
       <button id="addColBtn">列を追加</button><button id="removeColBtn">列を削除</button>
-      <button id="undoBtn">元に戻す</button><button id="exportBtn">保存</button>
-      <label class="fileBtn">読込<input id="importFile" type="file" accept="application/json,.json"></label>
-      <button id="printBtn">印刷・PDF</button>
+      <span class="desktopSecondaryActions"><button id="undoBtn">元に戻す</button><button id="exportBtn">保存</button>
+        <label class="fileBtn">読込<input id="importFile" type="file" accept="application/json,.json"></label>
+        <button id="printBtn">印刷・PDF</button></span>
+      <details class="mobileMoreMenu"><summary>保存・印刷・その他</summary><div>
+        <button type="button" data-trigger="undoBtn">元に戻す</button><button type="button" data-trigger="exportBtn">保存</button>
+        <button type="button" data-trigger="importFile">読込</button><button type="button" data-trigger="printBtn">印刷・PDF</button>
+      </div></details>
     </section>
 
     <section class="workspace">
@@ -87,16 +91,17 @@
           <p>大きな枠は1拍です。「半拍（Shift）」を押すと、枠と枠の間へ音を入れられます。</p>
         </div>
         <div class="notationTools">
-          <section>
-            <h2>奏法</h2>
+          <details class="toolDisclosure" open>
+            <summary>奏法</summary><div class="toolDisclosureBody">
             <div class="modeButtons"><button id="techNoneBtn" class="active">なし</button><button id="uchiBtn">、 打音</button><button id="kakeBtn">┐ 掛音</button></div>
             <div class="chiriControls">
               <button id="chiriBtn">列音を記入</button><button id="chiriEraseBtn">列音を消す</button>
               <label>列音の長さ <output id="chiriLengthOut">2音</output><input id="chiriLength" type="range" min="2" max="3" value="2"></label>
             </div>
-          </section>
-          <section>
-            <h2>歌の記号</h2>
+            </div>
+          </details>
+          <details class="toolDisclosure" open>
+            <summary>歌の記号</summary><div class="toolDisclosureBody">
             <div class="lyricSymbols">
               <button data-lyric-symbol="start">○ 歌い始め</button><button data-lyric-symbol="end">□ 歌い終わり</button>
               <button class="bracketChoice" data-lyric-symbol="hookTopOpen" aria-label="上側で曲がる白丸のカギ"><svg viewBox="0 0 44 48" aria-hidden="true"><line x1="24" y1="39" x2="24" y2="10"/><line x1="24" y1="10" x2="10" y2="10"/><circle cx="24" cy="39" r="4"/></svg></button>
@@ -106,7 +111,8 @@
               <button data-lyric-symbol="erase">記号を消す</button>
             </div>
             <label class="markLengthControl">カギの長さ <output id="markLengthOut">2拍</output><input id="markLength" type="range" min="1" max="12" value="2"></label>
-          </section>
+            </div>
+          </details>
         </div>
       </aside>
       <div class="scoreStage">
@@ -123,17 +129,17 @@
             <p><b>掛音</b><span>かきうとう。バチを弦の下からひっかけて弾く奏法。工工四で「┐」の記号がつく。</span></p>
             <p><b>列音</b><span>ちりびち。工工四の記号の右側に線を引いてつなげてある音を同時に出す弾き方。</span></p>
         </section>
-        <section class="player panel" aria-label="自動演奏">
-          <div><h2>自動演奏</h2><p id="playStatus" aria-live="polite">停止中</p></div>
-          <button id="playBtn" class="primary">▶ 最初から演奏</button>
-          <button id="stopBtn">■ 停止</button>
-        </section>
       </div>
+      <section class="player panel" aria-label="自動演奏">
+        <div><h2>自動演奏</h2><p id="playStatus" aria-live="polite">停止中</p></div>
+        <button id="playBtn" class="primary">▶ 最初から演奏</button>
+        <button id="stopBtn">■ 停止</button>
+      </section>
       <div id="printPages" class="printPages" aria-hidden="true"></div>
     </section>
   </main>
   <template id="columnTemplate"><div class="scoreCol"><button class="colSelect" title="列を選択"></button><div class="noteCells"></div><div class="lyricLane"><textarea class="lyrics" rows="1" maxlength="40" placeholder="歌詞"></textarea><div class="lyricsPrint" aria-hidden="true"></div><div class="lyricMarks"></div></div></div></template>
-  <script src="sample-score.js?v=134"></script>
-  <script src="app.js?v=134"></script>
+  <script src="sample-score.js?v=135"></script>
+  <script src="app.js?v=135"></script>
 </body>
 </html>
