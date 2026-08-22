@@ -1,5 +1,7 @@
 .workspace {
-  grid-template-columns: 500px minmax(0, 1fr);
+  grid-template-columns: clamp(280px, 25vw, 330px) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: start;
 }
 
 .rhythmHelpIntro {
@@ -155,8 +157,11 @@
 
 .palette {
   display: grid;
-  grid-template-columns: minmax(170px, .82fr) minmax(240px, 1fr);
-  gap: 12px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 8px;
+  padding: 8px;
   align-items: start;
 }
 
@@ -189,17 +194,45 @@
 }
 
 .toolDisclosure > summary {
-  margin: 0 0 8px;
-  font-size: 1rem;
+  position: relative;
+  margin: 0;
+  min-height: 40px;
+  padding: 10px 30px 8px 10px;
+  font-size: .86rem;
   font-weight: 700;
   list-style: none;
+  cursor: pointer;
 }
 
 .toolDisclosure > summary::-webkit-details-marker {
   display: none;
 }
 
+.toolDisclosure {
+  padding: 0;
+  border: 1px solid #cdbfa9;
+  border-radius: 9px;
+  background: #fffaf0;
+}
+
+.toolDisclosure > summary::after {
+  content: "＋";
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 1rem;
+}
+
+.toolDisclosure[open] > summary::after {
+  content: "−";
+}
+
 .toolDisclosureBody {
+  display: none !important;
+  padding: 0 7px 8px;
+}
+
+.toolDisclosure[open] > .toolDisclosureBody {
   display: block !important;
 }
 
@@ -246,9 +279,91 @@
 
 .workspace > .player {
   grid-column: 2;
+  grid-row: 1;
   width: min(390px, 100%);
-  margin: 14px auto 0;
-  padding: 12px;
+  margin: 0 0 10px auto;
+  padding: 9px 10px;
+}
+
+.scoreStage {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+@media screen and (min-width: 721px) {
+  .palette h2 {
+    font-size: .82rem;
+  }
+
+  .kandoInstruction {
+    line-height: 1.42;
+  }
+
+  .kandoImage {
+    margin-bottom: 6px;
+  }
+
+  .kandoRest,
+  .inputPosition button,
+  .screenKeypad button,
+  .palette .danger {
+    min-height: 40px;
+  }
+
+  .screenKeypad {
+    gap: 4px;
+  }
+
+  .screenKeypad button {
+    padding: 2px;
+  }
+
+  .screenKeypad b {
+    font-size: 1rem;
+  }
+
+  .screenKeypad small {
+    font-size: .7rem;
+  }
+
+  .inputStatus {
+    margin: 4px 0 !important;
+    padding: 4px;
+    font-size: .68rem;
+  }
+
+  .paletteRight > p:last-child {
+    margin: 5px 0 0;
+    font-size: .66rem;
+  }
+
+  .notationTools {
+    gap: 10px;
+  }
+
+  .modeButtons button,
+  .lyricSymbols button,
+  .chiriControls button {
+    min-height: 36px;
+    padding: .25rem;
+    font-size: .68rem;
+  }
+
+  .bracketChoice {
+    min-height: 48px !important;
+  }
+
+  .bracketChoice svg {
+    height: 38px;
+  }
+
+  .noteCell {
+    font-size: 1.55rem;
+  }
+
+  .halfCell span {
+    font-size: 1.12rem;
+  }
 }
 
 .mobileRest {
