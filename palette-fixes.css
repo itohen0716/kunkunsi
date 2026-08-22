@@ -251,6 +251,11 @@
   padding: 12px;
 }
 
+.mobileRest {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .bracketChoice svg {
   display: block;
   width: 36px;
@@ -627,8 +632,12 @@
   }
 
   .kandoRest {
-    min-height: 42px;
-    margin: 0;
+    display: none;
+  }
+
+  .mobileRest {
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .screenKeypad button {
